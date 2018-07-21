@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.databinding.ViewDataBinding;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Handler;

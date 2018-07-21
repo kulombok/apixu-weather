@@ -8,4 +8,6 @@
     <string name="button_retry">Retry</string>
     <string name="dummy_temp">20</string>
     <string name="dummy_city">Bangalore</string>
+    <string name="dummy_day">Monday</string>
+    <string name="dummy_next_temp">20 C</string>
 </resources>

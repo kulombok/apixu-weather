@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import id.wahyu.apixuweather.model.ForeCast;
 import id.wahyu.apixuweather.util.internet.IntenetConnectivityChecker;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -19,19 +20,22 @@ import rx.schedulers.Schedulers;
 
 public class ApiService implements ApiInteractor {
     public static final String PROVIDER_URL = "https://www.apixu.com/";
-    public static final String API_BASE_URL = "http://api.apixu.com/v1/forecast.json";
+    public static final String API_BASE_URL = "http://api.apixu.com/v1/";
     public static final String TOKEN = "b9a40bc1f66a466a87a90744182107";
 
     private ApiInterface apiInterface;
     private static Retrofit retrofit = null;
     private static OkHttpClient client = null;
 
-    public static Retrofit getClient(Context context) {
+    public ApiService(Context context) {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
-                .addInterceptor(new IntenetConnectivityChecker(context));
+                .addInterceptor(interceptor);
+//                .addInterceptor(new IntenetConnectivityChecker(context));
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
@@ -40,7 +44,7 @@ public class ApiService implements ApiInteractor {
                 .client(client.build())
                 .build();
 
-        return retrofit;
+        apiInterface = retrofit.create(ApiInterface.class);
     }
 
     @Override

@@ -31,4 +31,12 @@ public class ForeCast {
     public void setCurrent(CurrentForeCast current) {
         this.current = current;
     }
+
+    public NextForeCast getForecast() {
+        return forecast;
+    }
+
+    public void setForecast(NextForeCast forecast) {
+        this.forecast = forecast;
+    }
 }
