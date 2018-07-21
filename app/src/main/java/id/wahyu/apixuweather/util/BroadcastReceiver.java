@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import id.wahyu.apixuweather.util.internet.InternetNetworkChangeReceiver;
+
 /**
  * Created by 0426591017 on 7/21/2018.
  */
@@ -17,34 +19,20 @@ import android.widget.ProgressBar;
 public class BroadcastReceiver extends android.content.BroadcastReceiver {
 
     private Context context;
-    private Activity activity;
-    private Class classDest;
-    private View viewLayout;
-    private ProgressBar progressBar;
     private InternetNetworkChangeReceiver networkReceiver;
     private boolean oldResult;
     private String string = null;
 
     public BroadcastReceiver(Activity activity,
-                             InternetNetworkChangeReceiver networkReceiver,
-                             ProgressBar progressBar) {
+                             InternetNetworkChangeReceiver networkReceiver) {
         this.context = activity;
-        this.activity = activity;
         this.networkReceiver = networkReceiver;
-        this.progressBar = progressBar;
-    }
-
-    public void onReceive(Intent intent, View view, Class classDest){
-        this.viewLayout = view;
-        this.classDest = classDest;
     }
 
     @Override
     public void onReceive(Context c, Intent i) {
         if(i.hasExtra(InternetNetworkChangeReceiver.IS_NETWORK_AVAILABLE)) {
             boolean bol = i.getBooleanExtra(InternetNetworkChangeReceiver.IS_NETWORK_AVAILABLE, false);
-//            Log.d("Broadcast String", String.valueOf(string));
-//            Log.d("Broadcast oldResult", String.valueOf(oldResult));
             Log.d("Broadcast Result", String.valueOf(bol));
             if (string == null || oldResult != bol){
                 oldResult = bol;

@@ -1,4 +1,4 @@
-package id.wahyu.apixuweather.util;
+package id.wahyu.apixuweather.util.internet;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.Random;
 
 import id.wahyu.apixuweather.R;
+import id.wahyu.apixuweather.util.ApiService;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;

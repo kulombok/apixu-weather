@@ -1,4 +1,4 @@
-package id.wahyu.apixuweather.util;
+package id.wahyu.apixuweather.util.internet;
 
 import java.io.IOException;
 
