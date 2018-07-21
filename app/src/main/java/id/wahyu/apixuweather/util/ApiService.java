@@ -18,7 +18,8 @@ import rx.schedulers.Schedulers;
  */
 
 public class ApiService implements ApiInteractor {
-    public static final String BASE_URL = "http://api.apixu.com";
+    public static final String PROVIDER_URL = "https://www.apixu.com/";
+    public static final String API_BASE_URL = "http://api.apixu.com/v1/forecast.json";
     public static final String TOKEN = "b9a40bc1f66a466a87a90744182107";
 
     private ApiInterface apiInterface;
@@ -33,7 +34,7 @@ public class ApiService implements ApiInteractor {
                 .addInterceptor(new IntenetConnectivityChecker(context));
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client.build())

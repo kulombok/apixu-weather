@@ -10,6 +10,6 @@ import rx.Observable;
  */
 
 public interface ApiInterface {
-    @GET("v1/forecast.json?key={key}&q={city}&days={day}")
+    @GET("?key={key}&q={city}&days={day}")
     Observable<ForeCast> getForecast(@Path("key") String key, @Path("city") String city, @Path("day") int day);
 }

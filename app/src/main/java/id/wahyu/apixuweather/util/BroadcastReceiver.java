@@ -41,13 +41,13 @@ public class BroadcastReceiver extends android.content.BroadcastReceiver {
     public void onReceive(Context c, Intent i) {
         if(i.hasExtra(InternetNetworkChangeReceiver.IS_NETWORK_AVAILABLE)) {
             boolean bol = i.getBooleanExtra(InternetNetworkChangeReceiver.IS_NETWORK_AVAILABLE, false);
-            Log.d("Broadcast String", String.valueOf(string));
-            Log.d("Broadcast Old", String.valueOf(oldResult));
+//            Log.d("Broadcast String", String.valueOf(string));
+//            Log.d("Broadcast Old", String.valueOf(oldResult));
             Log.d("Broadcast Result", String.valueOf(bol));
             if (string == null || oldResult != bol){
                 oldResult = bol;
                 string = String.valueOf(oldResult);
-//
+
                 if (bol) {
                     Snackbar.make(layoutBinding.wrapper, context.getResources().getString(R.string.message_internet_ok), Snackbar.LENGTH_SHORT).show();
                     layoutBinding.clContentWrapper.setVisibility(View.VISIBLE);

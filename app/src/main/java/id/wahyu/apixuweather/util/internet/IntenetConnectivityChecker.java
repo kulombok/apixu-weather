@@ -11,7 +11,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
 
-import id.wahyu.apixuweather.R;
 import id.wahyu.apixuweather.util.ApiService;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -22,7 +21,7 @@ import okhttp3.Response;
  */
 
 public class IntenetConnectivityChecker implements Interceptor {
-    private static String site = ApiService.BASE_URL;
+    private static String site = ApiService.PROVIDER_URL;
     private static Random random = new Random();
     private String TAG = "INTERCEPTOR:";
     private Context context;
@@ -56,19 +55,8 @@ public class IntenetConnectivityChecker implements Interceptor {
         return chain.proceed(builder.build());
     }
 
-    // Check Internet Connection on Splash Screen
-    public static String hasActiveConnection(Context c) {
-        if (!hasActiveDevice(c)) {
-            return c.getResources().getString(R.string.message_no_device_connection);
-        } else if (!hasActiveInternetConnetion()){
-            return c.getResources().getString(R.string.message_no_internet_connection);
-        } else {
-            return c.getResources().getString(R.string.message_internet_ok);
-        }
-    }
-
     // Check Internet Connection by Device
-    private static boolean hasActiveDevice(Context context) {
+    public static boolean hasActiveDevice(Context context) {
         final ConnectivityManager connMgr = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         assert connMgr != null;

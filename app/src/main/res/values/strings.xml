@@ -3,4 +3,9 @@
     <string name="message_no_internet_connection">No Internet</string>
     <string name="message_no_device_connection">You are disconected</string>
     <string name="message_internet_ok">Connection OK</string>
+
+    <string name="txt_error_page">Something went wrong at our end!</string>
+    <string name="button_retry">Retry</string>
+    <string name="dummy_temp">20</string>
+    <string name="dummy_city">Bangalore</string>
 </resources>

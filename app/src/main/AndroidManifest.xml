@@ -17,10 +17,12 @@
         <!-- For Registering Network Changed Broadcast Receiver -->
         <receiver
             android:name=".util.internet.InternetNetworkChangeReceiver"
-            android:label="InternetNetworkChangeReceiver" >
+            android:label="IntenetConnectivityChecker" >
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="android.net.wifi.WifiManager.NETWORK_STATE_CHANGED_ACTION"/>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+                <action android:name="android.net.wifi.WifiManager.SUPLICANT_STATE_CHANGED_ACTION"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
 

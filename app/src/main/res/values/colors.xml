@@ -5,7 +5,10 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="bg_color">#F5F6F7</color>
-    <color name="white_txt_color">#F5F6F7</color>
+    <color name="bg_error_color">#E85959</color>
+    <color name="button_color">#4A4A4A</color>
+    <color name="white_txt_color">#FFFFFF</color>
+    <color name="semi_white_txt_color">#F5F6F7</color>
     <color name="black_txt_color">#2A2A2A</color>
     <color name="blue_txt_color">#556799</color>
 </resources>
