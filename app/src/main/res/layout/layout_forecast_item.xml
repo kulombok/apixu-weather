@@ -7,14 +7,13 @@
             type="id.wahyu.apixuweather.model.view.NextForeCastView"/>
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/item_wrapper"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_80"
         android:paddingStart="@dimen/dimen_16"
         android:paddingEnd="@dimen/dimen_16"
-        android:background="@color/white_txt_color"
-        android:orientation="vertical">
+        android:background="@color/white_txt_color">
 
         <RelativeLayout
             android:id="@+id/rl_item_list"
@@ -22,7 +21,8 @@
             android:layout_height="wrap_content"
             android:focusable="true"
             android:clickable="true"
-            android:layout_marginTop="@dimen/dimen_16">
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_centerVertical="true">
 
                 <TextView
                     android:id="@+id/txt_day"
@@ -57,8 +57,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_1"
-            android:background="@color/line_color" />
+            android:background="@color/line_color"
+            android:layout_alignParentBottom="true"
+            />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

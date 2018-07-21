@@ -28,8 +28,10 @@ public class ApiService implements ApiInteractor {
     private static OkHttpClient client = null;
 
     public ApiService(Context context) {
+        // For Debuging Retrofit
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(30, TimeUnit.SECONDS)

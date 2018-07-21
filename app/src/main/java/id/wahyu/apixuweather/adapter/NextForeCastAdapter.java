@@ -33,7 +33,9 @@ public class NextForeCastAdapter extends RecyclerView.Adapter<NextForeCastAdapte
         this.context = c;
         fontReg = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto/Roboto-Regular.ttf");
         for (NextForeCast.DetailBean dataBean : data) {
-            foreCasts.add(new NextForeCastView(dataBean.getDate(), dataBean.getDayTemperature().getAverageTemperature()));
+            String day = dataBean.getDate();
+            double d = Double.parseDouble(dataBean.getDayTemperature().getAverageTemperature());
+            foreCasts.add(new NextForeCastView(day, String.valueOf((int) Math.ceil(d))));
         }
         Log.d("FORECAST", String.valueOf(foreCasts));
         Log.d("DATABEAN", String.valueOf(data));

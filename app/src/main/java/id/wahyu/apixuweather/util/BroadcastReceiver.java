@@ -51,16 +51,22 @@ public class BroadcastReceiver extends android.content.BroadcastReceiver {
 
                 if (bol) {
                     Snackbar.make(layoutBinding.wrapper, context.getResources().getString(R.string.message_internet_ok), Snackbar.LENGTH_SHORT).show();
+                    layoutBinding.ivLoading.setVisibility(View.GONE);
                     layoutBinding.clContentWrapper.setVisibility(View.VISIBLE);
                     layoutBinding.clErrorWrapper.setVisibility(View.GONE);
                 } else {
                     Log.d("Broadcast Device", String.valueOf(IntenetConnectivityChecker.hasActiveDevice(context)));
                     if (!IntenetConnectivityChecker.hasActiveDevice(context)) {
+                        layoutBinding.ivLoading.setVisibility(View.GONE);
+                        layoutBinding.clContentWrapper.setVisibility(View.GONE);
                         layoutBinding.clErrorWrapper.setVisibility(View.VISIBLE);
                     } else {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                layoutBinding.ivLoading.setVisibility(View.VISIBLE);
+                                layoutBinding.clContentWrapper.setVisibility(View.GONE);
+                                layoutBinding.clErrorWrapper.setVisibility(View.GONE);
                                 Snackbar.make(layoutBinding.wrapper, context.getResources().getString(R.string.message_no_device_connection), Snackbar.LENGTH_INDEFINITE).setActionTextColor(context.getResources().getColor(R.color.white_txt_color)).setAction("Aktifkan", new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
