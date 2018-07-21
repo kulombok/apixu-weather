@@ -29,14 +29,15 @@ public class ApiService implements ApiInteractor {
 
     public ApiService(Context context) {
         // For Debuging Retrofit
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS)
-                .addInterceptor(interceptor);
+                .writeTimeout(15, TimeUnit.SECONDS);
+//                .addInterceptor(interceptor);
+                // Still dont know how to use Connection Interceptor in RX Java
 //                .addInterceptor(new IntenetConnectivityChecker(context));
 
         retrofit = new Retrofit.Builder()
