@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Apixu Weather</string>
+    <string name="message_no_internet_connection">No Internet</string>
+    <string name="message_no_device_connection">You are disconected</string>
+    <string name="message_internet_ok">Connection OK</string>
 </resources>
