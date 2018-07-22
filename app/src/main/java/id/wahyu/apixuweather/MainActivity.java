@@ -12,6 +12,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override public void onError(Throwable e) {
+                        Log.d("Retrofit Error", String.valueOf(e));
                         layoutBinding.ivLoading.setVisibility(View.GONE);
                         layoutBinding.clContentWrapper.setVisibility(View.GONE);
                         layoutBinding.clErrorWrapper.setVisibility(View.VISIBLE);
