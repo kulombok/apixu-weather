@@ -53,7 +53,7 @@ public class NextForeCastAdapter extends RecyclerView.Adapter<NextForeCastAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         NextForeCastView nfc = foreCasts.get(position);
-        ViewHolder viewHolder = (ViewHolder) holder;
+        ViewHolder viewHolder = holder;
         final int p = position;
         viewHolder.viewDataBinding.rlItemList.setOnClickListener(new View.OnClickListener() {
             @Override

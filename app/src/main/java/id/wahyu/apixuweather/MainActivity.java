@@ -1,7 +1,6 @@
 package id.wahyu.apixuweather;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
@@ -25,9 +24,7 @@ import id.wahyu.apixuweather.databinding.ActivityMainBinding;
 import id.wahyu.apixuweather.model.CurrentForeCast;
 import id.wahyu.apixuweather.model.ForeCast;
 import id.wahyu.apixuweather.model.NextForeCast;
-import id.wahyu.apixuweather.model.view.NextForeCastView;
 import id.wahyu.apixuweather.model.viewmodel.ForeCastViewModel;
-import id.wahyu.apixuweather.util.ApiInterface;
 import id.wahyu.apixuweather.util.ApiService;
 import id.wahyu.apixuweather.util.BroadcastReceiver;
 import id.wahyu.apixuweather.util.internet.InternetNetworkChangeReceiver;

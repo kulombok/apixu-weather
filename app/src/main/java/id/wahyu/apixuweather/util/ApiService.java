@@ -35,10 +35,10 @@ public class ApiService implements ApiInteractor {
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(30, TimeUnit.SECONDS)
-                .writeTimeout(15, TimeUnit.SECONDS);
+                .writeTimeout(15, TimeUnit.SECONDS)
 //                .addInterceptor(interceptor);
                 // Still dont know how to use Connection Interceptor in RX Java
-//                .addInterceptor(new IntenetConnectivityChecker(context));
+                .addInterceptor(new IntenetConnectivityChecker(context));
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)

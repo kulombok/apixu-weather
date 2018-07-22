@@ -34,15 +34,6 @@ public class IntenetConnectivityChecker implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Log.d(TAG, "Begin");
 
-        Request request = chain.request();
-        Response response = chain.proceed(request);
-
-        long requestLength = request.body().contentLength();
-        long responseLength = response.body().contentLength();
-
-        Log.d(TAG, "Request Size "+requestLength);
-        Log.d(TAG, "Response Size "+responseLength);
-
         if (!hasActiveDevice(context)) {
             Log.e(TAG, "Interupted by no device connection");
             throw new InternetConnectionDeviceException();
