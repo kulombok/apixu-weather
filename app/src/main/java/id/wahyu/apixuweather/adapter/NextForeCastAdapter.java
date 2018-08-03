@@ -6,9 +6,7 @@ import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -52,18 +50,7 @@ public class NextForeCastAdapter extends RecyclerView.Adapter<NextForeCastAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        NextForeCastView nfc = foreCasts.get(position);
-        ViewHolder viewHolder = holder;
-        final int p = position;
-        viewHolder.viewDataBinding.rlItemList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "TAG"+p, Toast.LENGTH_SHORT).show();
-            }
-        });
-        String s = nfc.getTemperatur()+" C";
-        viewHolder.viewDataBinding.txtDay.setText(nfc.getDay());
-        viewHolder.viewDataBinding.txtNextTemp.setText(s);
+        holder.viewDataBinding.setForecast(foreCasts.get(position));
     }
 
     @Override

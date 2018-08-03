@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout = layoutBinding.swipe;
         Animation rotate = AnimationUtils.loadAnimation(context, R.anim.image_rotation_animation);
         // Call Retrofit
-        foreCastViewModel = new ForeCastViewModel(new ApiService(context), AndroidSchedulers.mainThread(), TOKEN, CITY, DAY);
+        foreCastViewModel = new ForeCastViewModel(ApiService.getClient(context), AndroidSchedulers.mainThread());
 
         // Get Intent From Broadcast Internet Device Adapter
         broadcastReceiver = new BroadcastReceiver(this, new InternetNetworkChangeReceiver(), layoutBinding);
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadData() {
-        subscription.add(foreCastViewModel.getForeCast()
+        subscription.add(foreCastViewModel.getForeCast(TOKEN, CITY, DAY)
                 .subscribe(new Observer<ForeCast>() {
                     @Override public void onCompleted() {
                         layoutBinding.ivLoading.setVisibility(View.GONE);
@@ -120,9 +120,6 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override public void onNext(ForeCast cast) {
                         try {
-                            layoutBinding.ivLoading.setVisibility(View.GONE);
-                            layoutBinding.clContentWrapper.setVisibility(View.VISIBLE);
-                            layoutBinding.clErrorWrapper.setVisibility(View.GONE);
                             updateHeader(cast.getCurrent(), cast.getLocation());
                             updateList(cast.getForecast());
                         } catch (ParseException e) {

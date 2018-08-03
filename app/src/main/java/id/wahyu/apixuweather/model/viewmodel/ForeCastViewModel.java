@@ -1,9 +1,10 @@
 package id.wahyu.apixuweather.model.viewmodel;
 
 import id.wahyu.apixuweather.model.ForeCast;
-import id.wahyu.apixuweather.util.ApiInteractor;
+import id.wahyu.apixuweather.util.ApiInterface;
 import rx.Observable;
 import rx.Scheduler;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by 0426591017 on 7/21/2018.
@@ -11,20 +12,15 @@ import rx.Scheduler;
 
 public class ForeCastViewModel {
 
-    private ApiInteractor interactor;
+    private ApiInterface interactor;
     private Scheduler scheduler;
-    private String key, city;
-    private int day;
 
-    public ForeCastViewModel(ApiInteractor interactor, Scheduler scheduler, String key, String city, int day) {
+    public ForeCastViewModel(ApiInterface interactor, Scheduler scheduler) {
         this.interactor = interactor;
         this.scheduler = scheduler;
-        this.key = key;
-        this.city = city;
-        this.day = day;
     }
 
-    public Observable<ForeCast> getForeCast(){
-        return interactor.getForeCast(key, city, day).observeOn(scheduler);
+    public Observable<ForeCast> getForeCast(String key, String city, int day){
+        return interactor.getForecast(key, city, day).subscribeOn(scheduler).observeOn(scheduler);
     }
 }

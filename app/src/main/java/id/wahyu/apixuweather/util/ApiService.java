@@ -18,27 +18,26 @@ import rx.schedulers.Schedulers;
  * Created by 0426591017 on 7/21/2018.
  */
 
-public class ApiService implements ApiInteractor {
+public class ApiService {
     public static final String PROVIDER_URL = "https://www.apixu.com/";
     public static final String API_BASE_URL = "http://api.apixu.com/v1/";
     public static final String TOKEN = "b9a40bc1f66a466a87a90744182107";
 
-    private ApiInterface apiInterface;
     private static Retrofit retrofit = null;
-    private static OkHttpClient client = null;
 
-    public ApiService(Context context) {
+    public static ApiInterface getClient(Context context){
+
         // For Debuging Retrofit
-//        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-//        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder client = new OkHttpClient.Builder()
                 .connectTimeout(1, TimeUnit.MINUTES)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
-//                .addInterceptor(interceptor);
+                .addInterceptor(interceptor);
                 // Still dont know how to use Connection Interceptor in RX Java
-                .addInterceptor(new IntenetConnectivityChecker(context));
+//                .addInterceptor(new IntenetConnectivityChecker(context));
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(API_BASE_URL)
@@ -47,11 +46,6 @@ public class ApiService implements ApiInteractor {
                 .client(client.build())
                 .build();
 
-        apiInterface = retrofit.create(ApiInterface.class);
-    }
-
-    @Override
-    public Observable<ForeCast> getForeCast(String key, String city, int day) {
-        return apiInterface.getForecast(key, city, day).subscribeOn(Schedulers.io());
+        return retrofit.create(ApiInterface.class);
     }
 }
